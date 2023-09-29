@@ -13,11 +13,15 @@ protocol WeatherDelegate: AnyObject {
     func failedToLoadWeatherDetails()
 }
 
-class WeatherViewModel {
+class WeatherViewModel: ViewModel {
 
     var weatherDetails: WeatherDetails?
     weak var delegate: WeatherDelegate?
 
+    override init(withCoordinator: Coordinator?) {
+        super.init(withCoordinator: withCoordinator)
+    }
+    
     var cityName: String {
         return weatherDetails?.name ?? ""
     }

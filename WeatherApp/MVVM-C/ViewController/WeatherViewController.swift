@@ -21,8 +21,9 @@ class WeatherViewController: BaseViewController {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var weatherTypeImage: UIImageView!
     @IBOutlet weak var bacgroundImage: UIImageView!
+    @IBOutlet weak var infoLabel: UILabel!
 
-    var weatherViewModel = WeatherViewModel()
+    var weatherViewModel: WeatherViewModel!
     var locationManager = LocationManager()
 
     override func viewDidLoad() {
@@ -30,6 +31,7 @@ class WeatherViewController: BaseViewController {
         weatherViewModel.delegate = self
         locationManager.delegate = self
         weatherView.isHidden = true
+        infoLabel.isHidden = true
         locationManager.requestLocation()
     }
 
@@ -42,14 +44,12 @@ class WeatherViewController: BaseViewController {
         maxTempLabel.text = "\(weatherViewModel.maximumTemperature)"
         windSpeedLabel.text = "\(weatherViewModel.windSpeed)"
         humidityLabel.text = "\(weatherViewModel.humidity)"
-       // weatherTypeImage.image = UIImage(systemName: "sun.min.fill")
         bacgroundImage.image = UIImage(resource: .city)
 
     }
 
     @IBAction func searchButtonAction(_ sender: Any) {
-        let searchWeatherViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SearchWeatherViewController") as? SearchWeatherViewController
-        self.navigationController?.pushViewController(searchWeatherViewController!, animated: true)
+        weatherViewModel.coordinator?.raise(event: WeatherEvent.searchWeather)
     }
 }
 
@@ -83,7 +83,7 @@ extension WeatherViewController: LocationProtocol {
     }
 
     func failedToFetchCurrentLocation() {
-
+        infoLabel.isHidden = false
     }
 
 }

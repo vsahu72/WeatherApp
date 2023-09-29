@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LW2-VM-qVq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -13,7 +13,7 @@
         <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WeatherViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeatherViewController" id="BYZ-38-t0r" customClass="WeatherViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -350,6 +350,7 @@
                         <outlet property="currentTempLabel" destination="RHN-cP-0kd" id="N6f-Z9-8UH"/>
                         <outlet property="dateLabel" destination="2Sc-xz-9n5" id="yHw-eH-MJk"/>
                         <outlet property="humidityLabel" destination="rQO-vC-6Re" id="Ssd-ZO-Mxs"/>
+                        <outlet property="infoLabel" destination="y0P-UB-HbQ" id="Lat-JV-7od"/>
                         <outlet property="maxTempLabel" destination="QSL-NE-aOM" id="aTk-LL-43e"/>
                         <outlet property="miniTempLabel" destination="BLN-qq-tC3" id="KHC-qN-8cZ"/>
                         <outlet property="weatherTypeImage" destination="CEs-MO-s3C" id="swo-5i-uGz"/>
@@ -361,23 +362,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="391" y="1"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="aud-XW-zmU">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" navigationBarHidden="YES" id="LW2-VM-qVq" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0wP-7x-JTT">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="L36-UJ-izZ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sGX-SJ-6p6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-442.02898550724643" y="1.3392857142857142"/>
         </scene>
         <!--Search Weather View Controller-->
         <scene sceneID="NQY-Je-ygg">
@@ -766,6 +750,7 @@
                         <outlet property="currentTempLabel" destination="o7u-jP-jRX" id="Siq-IJ-EaI"/>
                         <outlet property="dateLabel" destination="P7g-dS-aPG" id="MI8-26-o8E"/>
                         <outlet property="humidityLabel" destination="bHH-Jx-p8Y" id="a9X-Ne-yep"/>
+                        <outlet property="infoLabel" destination="FvA-5y-5pV" id="oOb-yD-fqw"/>
                         <outlet property="maxTempLabel" destination="RMJ-Nm-aww" id="YRP-xT-SQF"/>
                         <outlet property="miniTempLabel" destination="miB-bX-g87" id="dyD-d3-JA2"/>
                         <outlet property="searchTextField" destination="eUu-OB-zbj" id="zJU-DW-KeO"/>

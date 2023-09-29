@@ -21,14 +21,16 @@ class SearchWeatherViewController: BaseViewController {
     @IBOutlet weak var weatherTypeImage: UIImageView!
     @IBOutlet weak var bacgroundImage: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var infoLabel: UILabel!
 
-    var searchWeatherViewModel = SearchWeatherViewModel()
+    var searchWeatherViewModel: SearchWeatherViewModel!
     var locationManager = LocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         searchWeatherViewModel.delegate = self
         self.weatherView.isHidden = true
+        infoLabel.text = "Please enter city name to get weather details."
     }
 
     func pupulateValues() {
@@ -60,15 +62,18 @@ extension SearchWeatherViewController: SearchWeatherDelegate {
     }
 
     func didFinishToSearchWeatherDetails() {
-        DispatchQueue.main.async {
-            self.weatherView.isHidden = false
-            self.pupulateValues()
+        DispatchQueue.main.async { [weak self] in
+            self?.infoLabel.isHidden = true
+            self?.weatherView.isHidden = false
+            self?.pupulateValues()
         }
     }
 
     func failedToSearchWeatherDetails() {
-        DispatchQueue.main.async {
-            self.weatherView.isHidden = true
+        DispatchQueue.main.async { [weak self] in
+            self?.infoLabel.text = "Result not found. Please enter correct city name to get weather details" 
+            self?.infoLabel.isHidden = false
+            self?.weatherView.isHidden = true
         }
     }
 

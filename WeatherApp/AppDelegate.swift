@@ -10,10 +10,18 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
+    private var appNavigationCoordinator: AppCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Override point for customization after application launch.
+        if #available(iOS 13, *) { // This part is done in SceneDelegate
+        } else {
+            window = UIWindow(frame: UIScreen.main.bounds)
+            appNavigationCoordinator = AppCoordinator(window: window!)
+            appNavigationCoordinator.startFlow()
+        }
         return true
     }
 
@@ -30,7 +38,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
-

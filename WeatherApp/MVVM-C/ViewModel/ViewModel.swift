@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 public class ViewModel {
     // Flow coordinator
     var coordinator: Coordinator?

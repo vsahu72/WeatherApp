@@ -7,27 +7,26 @@
 
 import Foundation
 
-
 class NetworkManager {
     public static let shared = NetworkManager()
-    
-    func executeWith<T:Decodable>(urlString:String,success: @escaping ((T)->Void), fail: @escaping (()->Void)){
-        
+
+    func executeWith<T: Decodable>(urlString: String, success: @escaping ((T) -> Void), fail: @escaping (() -> Void)) {
+
         let url = URL(string: urlString)
-        guard let urlObject = url else{return}
+        guard let urlObject = url else {return}
         let session = URLSession.shared
         var request = URLRequest(url: urlObject)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task : URLSessionDataTask = session.dataTask(with: request as URLRequest) { data, response, error in
+
+        let task: URLSessionDataTask = session.dataTask(with: request as URLRequest) { data, _, error in
             guard error == nil else {return}
             guard let data = data else {return}
             let decoder = JSONDecoder()
-            
-            if let json = try? decoder.decode(T.self, from: data){
+
+            if let json = try? decoder.decode(T.self, from: data) {
                 success(json)
-            }else{
+            } else {
                 fail()
             }
         }
